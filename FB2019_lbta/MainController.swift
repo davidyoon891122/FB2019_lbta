@@ -33,10 +33,15 @@ class PostCell: LBTAListCell<String> {
         
     }
 }
-
+// Table Header
 class StoryHeader: UICollectionReusableView {
+    
+    let storiesContoller = StoriesController(scrollDirection: .horizontal)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        //backgroundColor = .yellow
+        stack(storiesContoller.view)
     }
     
     required init?(coder: NSCoder) {
@@ -44,16 +49,76 @@ class StoryHeader: UICollectionReusableView {
     }
 }
 
+class StoryPhotoCell: LBTAListCell<String> {
+    override var item: String! {
+        didSet {
+            imageView.image = UIImage(named: item)
+        }
+    }
+    let imageView = UIImageView(image: nil, contentMode: .scaleAspectFill)
+    let nameLabel = UILabel(text: "Lee Ji Eun",font: .boldSystemFont(ofSize: 14), textColor: .white)
+    
+    override func setupViews() {
+        //backgroundColor = .red
+        imageView.layer.cornerRadius = 10
+        
+        stack(imageView)
+        
+        setupGradientLayer()
+        stack(UIView(), nameLabel).withMargins(.allSides(8))
+    }
+    let gradientLayer = CAGradientLayer()
+    
+    fileprivate func setupGradientLayer() {
+        
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.red.cgColor]
+        gradientLayer.locations = [0.5, 1.1]
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        layer.addSublayer(gradientLayer)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = bounds
+    }
+}
 
-LBTAListHeaderController<PostCell, String, Header>
-
+class StoriesController: LBTAListController<StoryPhotoCell, String>, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: 100, height: view.frame.height - 24)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 0, left: 12, bottom: 0, right: 12)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.items = ["image03", "image04", "image01", "image02", "image03"]
+    }
+    
+}
 
 
 
 // LBTAListController<Cell, Type of Cell<Generic> >
 // UICollectionViewDelegateFLowLayout is for setting Rect's size
-
-class MainController: LBTAListController<PostCell, String>, UICollectionViewDelegateFlowLayout {
+// replace LBTAListController to LBTAListHeaderController
+class MainController: LBTAListHeaderController<PostCell, String, StoryHeader>, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return .init(width: 0, height: 200)
+    }
+    
+    // make some spaces on the top of First Table
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 12, left: 0, bottom: 0, right: 0)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // set MainController backgroundcolor to yellow
