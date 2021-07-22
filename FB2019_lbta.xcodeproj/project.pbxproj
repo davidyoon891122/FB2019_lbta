@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		AD3FD18D26A98D8400E936C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3FD18C26A98D8400E936C0 /* Assets.xcassets */; };
 		AD3FD19026A98D8400E936C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3FD18F26A98D8400E936C0 /* Preview Assets.xcassets */; };
 		AD3FD19326A98D8400E936C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3FD19126A98D8400E936C0 /* LaunchScreen.storyboard */; };
+		AD3FD19B26A98E1200E936C0 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FD19A26A98E1200E936C0 /* MainController.swift */; };
+		AD3FD19E26A992C400E936C0 /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = AD3FD19D26A992C400E936C0 /* LBTATools */; };
+		AD3FD1A026A9986A00E936C0 /* PhotoGridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FD19F26A9986A00E936C0 /* PhotoGridController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,8 @@
 		AD3FD18F26A98D8400E936C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AD3FD19226A98D8400E936C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD3FD19426A98D8400E936C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD3FD19A26A98E1200E936C0 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		AD3FD19F26A9986A00E936C0 /* PhotoGridController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD3FD19E26A992C400E936C0 /* LBTATools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +72,8 @@
 				AD3FD19426A98D8400E936C0 /* Info.plist */,
 				AD3FD18926A98D8400E936C0 /* FB2019_lbta.xcdatamodeld */,
 				AD3FD18E26A98D8400E936C0 /* Preview Content */,
+				AD3FD19A26A98E1200E936C0 /* MainController.swift */,
+				AD3FD19F26A9986A00E936C0 /* PhotoGridController.swift */,
 			);
 			path = FB2019_lbta;
 			sourceTree = "<group>";
@@ -94,6 +102,9 @@
 			dependencies = (
 			);
 			name = FB2019_lbta;
+			packageProductDependencies = (
+				AD3FD19D26A992C400E936C0 /* LBTATools */,
+			);
 			productName = FB2019_lbta;
 			productReference = AD3FD18026A98D8400E936C0 /* FB2019_lbta.app */;
 			productType = "com.apple.product-type.application";
@@ -121,6 +132,9 @@
 				Base,
 			);
 			mainGroup = AD3FD17726A98D8400E936C0;
+			packageReferences = (
+				AD3FD19C26A992C400E936C0 /* XCRemoteSwiftPackageReference "LBTATools" */,
+			);
 			productRefGroup = AD3FD18126A98D8400E936C0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -150,8 +164,10 @@
 			files = (
 				AD3FD18426A98D8400E936C0 /* AppDelegate.swift in Sources */,
 				AD3FD18626A98D8400E936C0 /* SceneDelegate.swift in Sources */,
+				AD3FD1A026A9986A00E936C0 /* PhotoGridController.swift in Sources */,
 				AD3FD18B26A98D8400E936C0 /* FB2019_lbta.xcdatamodeld in Sources */,
 				AD3FD18826A98D8400E936C0 /* ContentView.swift in Sources */,
+				AD3FD19B26A98E1200E936C0 /* MainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +365,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD3FD19C26A992C400E936C0 /* XCRemoteSwiftPackageReference "LBTATools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bhlvoong/LBTATools.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.17;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD3FD19D26A992C400E936C0 /* LBTATools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD3FD19C26A992C400E936C0 /* XCRemoteSwiftPackageReference "LBTATools" */;
+			productName = LBTATools;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		AD3FD18926A98D8400E936C0 /* FB2019_lbta.xcdatamodeld */ = {
